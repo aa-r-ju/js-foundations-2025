@@ -4,34 +4,137 @@
 
 /* eslint-disable no-unused-vars */
 
-function factorial() {
+// function factorial() {
 
+// }
+
+// function sumTheDigits() {
+
+// }
+
+// function countTheVowels() {
+
+// }
+
+// function recSmallestInt() {
+
+// }
+
+// function fib() {
+
+// }
+
+// function stringify() {
+
+// }
+
+// function search() {
+
+// }
+
+// function recursiveMap() {
+
+// }
+
+function factorialIterative(n) {
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+function factorial(n) {
+  if (n === 0) return 1; // Base case
+  return n * factorial(n - 1); // Recursive case
+}
+function sumTheDigits(arr) {
+  if (arr.length === 0) return 0; // Base case
+  return arr[0] + sumTheDigits(arr.slice(1)); // Recursive case
+}
+function countTheVowels(str) {
+  const vowels = "aeiou";
+  if (str.length === 0) return 0; // Base case
+  const count = vowels.includes(str[0].toLowerCase()) ? 1 : 0;
+  return count + countTheVowels(str.slice(1)); // Recursive case
+}
+function recSmallestInt(arr) {
+  if (arr.length === 1) return arr[0]; // Base case
+  const restSmallest = recSmallestInt(arr.slice(1)); // Recursive case
+  return arr[0] < restSmallest ? arr[0] : restSmallest;
+}
+function fib(n) {
+  if (n === 0 || n === 1) return 1; // Base cases
+  return fib(n - 1) + fib(n - 2); // Recursive case
+}
+function type(value) {
+  const rawType = Object.prototype.toString.call(value);
+  return rawType.slice(8, -1); // Extracts "Type" from "[object Type]"
+}
+function stringify(input) {
+  const t = type(input);
+
+  if (t === "Undefined") return "undefined";
+  if (t === "Null") return "null";
+  if (t === "Boolean") return input.toString();
+  if (t === "Number") return input.toString();
+  if (t === "String") return `"${input}"`;
+
+  if (t === "Array") {
+    return `[${input.map(stringify).join(",")}]`;
+  }
+
+  if (t === "Object") {
+    const entries = Object.entries(input).map(
+      ([key, value]) => `"${key}":${stringify(value)}`
+    );
+    return `{${entries.join(",")}}`;
+  }
+
+  throw new Error(`Unsupported type: ${t}`);
+}
+function search(matchingFunction) {
+  // Iterate through the current array (this is the contextual array).
+  for (let i = 0; i < this.length; i++) {
+    const element = this[i];
+
+    // If the element is an array, recursively call the search function on the nested array.
+    if (Array.isArray(element)) {
+      // Use Function.prototype.call to provide the correct context for recursion.
+      if (search.call(element, matchingFunction)) {
+        return true;
+      }
+    } else {
+      // If the element satisfies the matching function, return true.
+      if (matchingFunction(element)) {
+        return true;
+      }
+    }
+  }
+
+  // If no match is found, return false.
+  return false;
 }
 
-function sumTheDigits() {
+// function recursiveMap(array, mappingFunction) {
+//   return array.reduce((acc, element) => {
+//     if (Array.isArray(element)) {
+//       // Recursively process nested arrays
+//       return acc.concat(recursiveMap(element, mappingFunction));
+//     }
+//     // Apply the mapping function to non-array elements
+//     return acc.concat(mappingFunction(element));
+//   }, []);
+// }
 
-}
-
-function countTheVowels() {
-
-}
-
-function recSmallestInt() {
-
-}
-
-function fib() {
-
-}
-
-function stringify() {
-
-}
-
-function search() {
-
-}
-
-function recursiveMap() {
-
+function recursiveMap(array, mappingFunction) {
+  // Iterate over the array using reduce.
+  return array.reduce((acc, element) => {
+    if (Array.isArray(element)) {
+      // If the element is an array, recursively call recursiveMap.
+      return acc.concat(recursiveMap(element, mappingFunction));
+    } else {
+      // Otherwise, apply the mapping function to the element.
+      return acc.concat(mappingFunction(element));
+    }
+  }, []);
 }
