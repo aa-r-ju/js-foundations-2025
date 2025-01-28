@@ -141,5 +141,3 @@ function sort(arr) {
   }
   return arr;
 }
-
-sort(["toad", "prune", "pretzel", "aardvark", "tuna", "weasel"]);
