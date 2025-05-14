@@ -16,3 +16,25 @@ Pokemon.prototype.isDefeated = function () {
     return true;
   }
 };
+
+function simulateBattle(pokemon1, pokemon2, firstAttackerName) {
+  let attacker, defender;
+
+  if (pokemon1.name === firstAttackerName) {
+    attacker = pokemon1;
+    defender = pokemon2;
+  } else {
+    attacker = pokemon2;
+    defender = pokemon1;
+  }
+
+  while (!attacker.isDefeated() && !defender.isDefeated()) {
+    defender.health -= attacker.biteAttack();
+
+    [attacker, defender] = [defender, attacker];
+  }
+
+  return attacker.isDefeated()
+    ? `${defender.name} Wins!`
+    : `${attacker.name} Wins!`;
+}
