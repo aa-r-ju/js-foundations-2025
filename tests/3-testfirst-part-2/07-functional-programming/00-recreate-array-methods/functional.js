@@ -18,4 +18,17 @@ function map(arr, callback) {
   return newArr;
 }
 
-function filter() {}
+function evenFilter(num) {
+  return num;
+}
+
+function filter(arr, callback) {
+  let newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
