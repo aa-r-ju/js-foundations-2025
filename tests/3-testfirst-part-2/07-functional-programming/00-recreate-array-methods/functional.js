@@ -49,3 +49,8 @@ function includes(arr, searchVal) {
   }
   return false;
 }
+
+function countWords(total, sentence) {
+  const words = sentence.split(" ").filter((word) => word !== "");
+  return total + words.length;
+}
