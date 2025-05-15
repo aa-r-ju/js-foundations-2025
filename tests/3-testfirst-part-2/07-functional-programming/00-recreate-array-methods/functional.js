@@ -62,3 +62,15 @@ function reduce(array, start, callback) {
   }
   return accumulator;
 }
+
+function sum(array) {
+  return reduce(array, 0, (acc, val) => acc + val);
+}
+
+function every(array, callback) {
+  return reduce(array, true, (acc, val) => acc && !!callback(val));
+}
+
+function some(array, callback) {
+  return reduce(array, false, (acc, val) => acc || !!callback(val));
+}
