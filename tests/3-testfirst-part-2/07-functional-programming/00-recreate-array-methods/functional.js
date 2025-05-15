@@ -54,3 +54,11 @@ function countWords(total, sentence) {
   const words = sentence.split(" ").filter((word) => word !== "");
   return total + words.length;
 }
+
+function reduce(array, start, callback) {
+  let accumulator = start;
+  for (let i = 0; i < array.length; i++) {
+    accumulator = callback(accumulator, array[i], i, array);
+  }
+  return accumulator;
+}
