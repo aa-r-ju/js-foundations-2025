@@ -32,3 +32,20 @@ function filter(arr, callback) {
   }
   return newArr;
 }
+
+function includes(arr, searchVal) {
+  if (Array.isArray(arr)) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === searchVal) {
+        return true;
+      }
+    }
+  } else {
+    for (let key in arr) {
+      if (arr[key] === searchVal) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
