@@ -1,1 +1,21 @@
 /* eslint-disable no-unused-vars */
+
+function forEach(arr) {
+  arr.forEach((val) => {
+    console.log(val);
+  });
+}
+
+function doubler(n) {
+  return n * 2;
+}
+
+function map(arr, callback) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(callback(arr[i]));
+  }
+  return newArr;
+}
+
+function filter() {}
