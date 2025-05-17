@@ -13,3 +13,7 @@ function swapCase(str) {
     .map((word, index) => (index % 2 === 0 ? capitalize(word) : word))
     .join(" ");
 }
+
+function extensionSearch(extension, files) {
+  return files.filter((file) => file.endsWith(`.${extension}`));
+}
