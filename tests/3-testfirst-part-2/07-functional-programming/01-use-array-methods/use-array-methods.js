@@ -46,3 +46,12 @@ function mapReduce(arr, callback) {
     return result;
   }, []);
 }
+
+function filterReduce(arr, callback) {
+  return arr.reduce((result, val, index, array) => {
+    if (callback(val, index, array)) {
+      result.push(val);
+    }
+    return result;
+  }, []);
+}
