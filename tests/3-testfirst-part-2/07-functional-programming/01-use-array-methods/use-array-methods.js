@@ -26,3 +26,10 @@ function getPopulation(countries, names) {
     return sum;
   }, 0);
 }
+
+function keyifyArrayOfObjects(key, arr) {
+  return arr.reduce((obj, item) => {
+    obj[item[key]] = item;
+    return obj;
+  }, {});
+}
