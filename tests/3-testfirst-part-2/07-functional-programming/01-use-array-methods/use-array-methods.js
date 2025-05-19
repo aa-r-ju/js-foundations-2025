@@ -39,3 +39,10 @@ function powerLevelAverage(superheroes) {
   const total = superheroes.reduce((sum, hero) => sum + hero.powerLevel, 0);
   return Math.round(total / superheroes.length);
 }
+
+function mapReduce(arr, callback) {
+  return arr.reduce((result, val, index, array) => {
+    result.push(callback(val, index, array));
+    return result;
+  }, []);
+}
