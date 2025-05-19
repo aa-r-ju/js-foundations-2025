@@ -55,3 +55,9 @@ function filterReduce(arr, callback) {
     return result;
   }, []);
 }
+
+function inYourBudget(maxPrice, items) {
+  return items
+    .filter((item) => item.price <= maxPrice)
+    .map((item) => item.item);
+}
