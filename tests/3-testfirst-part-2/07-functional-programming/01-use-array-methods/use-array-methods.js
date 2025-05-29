@@ -61,3 +61,22 @@ function inYourBudget(maxPrice, items) {
     .filter((item) => item.price <= maxPrice)
     .map((item) => item.item);
 }
+
+function separateAndReturnNames(arr, nameType, maxLength) {
+  arr.map((hero) => {
+    const [firstName, lastName] = hero.name.split(" ");
+    hero.firstName = firstName;
+    hero.lastName = lastName;
+    return hero;
+  });
+
+  return arr
+    .map((hero) => hero[nameType])
+    .filter((name) => name.length <= maxLength);
+}
+
+function priorityTodoDuration(todoList) {
+  return todoList
+    .filter((task) => task.priority === "high")
+    .reduce((total, task) => total + task.duration, 0);
+}
