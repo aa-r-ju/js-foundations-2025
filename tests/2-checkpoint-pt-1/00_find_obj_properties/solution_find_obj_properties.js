@@ -10,3 +10,7 @@ function findObjPropsHasOwn(obj) {
 
   return keys.join(", ");
 }
+
+function findObjKeys(obj) {
+  return Object.keys(obj).join(", ");
+}
